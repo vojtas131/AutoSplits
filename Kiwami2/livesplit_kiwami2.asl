@@ -8,6 +8,14 @@ init
 {
     vars.doSplit = true;
 }
+//Start starts like a 1s late
+start
+{
+    if(current.value.StartsWith("lexus2_tit"))
+    {
+        return true;
+    }
+}
 isLoading
 {
     return current.isLoad == 1;
@@ -28,9 +36,12 @@ split
    {
        vars.doSplit = true;
    }
-   if(old.end.StartWith("h26030_ryuji3_crosscounter") && current.end.StartWith("btled_tod_s_f"))
+   /*
+   Ending that splits like 4s late then rules says needs more testing if it's 4s
+   if(old.end.StartsWith("h26030_ryuji3_crosscounter") && current.end.StartsWith("btled_tod_s_f"))
    {
        return true;
    }
+   */
    return false;
 }
