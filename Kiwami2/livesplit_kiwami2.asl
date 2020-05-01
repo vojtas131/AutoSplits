@@ -1,6 +1,7 @@
 state("YakuzaKiwami2")
 {
     byte isLoad : 0x2F05A00, 0x224;
+    byte diffStart : 0x029FB430, 0x360;
     string10 value : 0x2A054B0;
     string26 end : 0x2A050A0;
 }
@@ -8,13 +9,21 @@ init
 {
     vars.doSplit = true;
 }
-//Start starts like a 1s late
+//Doesn't work for normal difficulty
 start
 {
+    if(current.value.StartsWith("qloc_menu_") && current.diffStart!=old.diffStart)
+    {
+        return true;
+    }
+    /*
+    Start starts like a 1s late with this one
+    
     if(current.value.StartsWith("lexus2_tit"))
     {
         return true;
     }
+    */
 }
 isLoading
 {
