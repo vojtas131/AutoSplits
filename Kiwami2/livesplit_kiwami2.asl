@@ -8,6 +8,7 @@ state("YakuzaKiwami2")
 init
 {
     vars.doSplit = true;
+    vars.endFight = false;
 }
 //Doesn't work for normal difficulty
 start
@@ -45,6 +46,16 @@ split
    {
        vars.doSplit = true;
    }
+   if(current.end.StartsWith("h26350_iibuchi"))
+   {
+       vars.endFight = true;
+   }
+   if(vars.endFight && current.end.StartsWith("btled_tod_s_f"))
+   {
+       vars.endFight = false;
+       return true;
+   }
+
    /*
    Ending that splits like 4s late then rules says needs more testing if it's 4s
    if(old.end.StartsWith("h26030_ryuji3_crosscounter") && current.end.StartsWith("btled_tod_s_f"))
@@ -52,5 +63,6 @@ split
        return true;
    }
    */
+
    return false;
 }
