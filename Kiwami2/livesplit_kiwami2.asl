@@ -1,7 +1,7 @@
 state("YakuzaKiwami2", "AS")
 {
-    byte isLoad : 0x2F05A00, 0x224;
-    byte diffStart : 0x029FB430, 0x360;
+    byte isLoad : 0x2F04580, 0x224;
+    byte diffStart : 0x029FA6E0, 0x360;
     string10 value : 0x2A04510;
     string26 end : 0x2A04100;
 }
