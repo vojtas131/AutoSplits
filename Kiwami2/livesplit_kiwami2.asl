@@ -1,12 +1,28 @@
-state("YakuzaKiwami2")
+state("YakuzaKiwami2", "AS")
+{
+    byte isLoad : 0x2F05A00, 0x224;
+    byte diffStart : 0x029FB430, 0x360;
+    string10 value : 0x2A04510;
+    string26 end : 0x2A04100;
+}
+state("YakuzaKiwami2", "EU")
 {
     byte isLoad : 0x2F05A00, 0x224;
     byte diffStart : 0x029FB430, 0x360;
     string10 value : 0x2A054B0;
-    string26 end : 0x2A050A0;
+    string26 end : 0x2A050A0; 
 }
+//EU: 69767168 AS: 69746688
 init
 {
+    if(modules.First().ModuleMemorySize==69746688)
+    {
+        version = "AS";
+    }
+    if(modules.First().ModuleMemorySize==69767168)
+    {
+        version = "EU";
+    }
     vars.doSplit = true;
     vars.endFight = false;
 }
@@ -57,7 +73,7 @@ split
    }
 
    /*
-   Ending that splits like 4s late then rules says needs more testing if it's 4s
+   Ending that splits like 4s later than rules says needs more testing if it's 4s
    if(old.end.StartsWith("h26030_ryuji3_crosscounter") && current.end.StartsWith("btled_tod_s_f"))
    {
        return true;
