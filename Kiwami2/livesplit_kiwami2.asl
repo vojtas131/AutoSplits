@@ -23,7 +23,7 @@ init
     {
         version = "EU";
     }
-    vars.doSplit = true;
+    //vars.doSplit = true;
     vars.endFight = false;
 }
 //Doesn't work for normal difficulty
@@ -31,6 +31,7 @@ start
 {
     if(current.value.StartsWith("qloc_menu_") && current.diffStart!=old.diffStart)
     {
+        vars.endFight = false;
         return true;
     }
     /*
@@ -49,19 +50,12 @@ isLoading
 }
 split
 {
-   if(current.value.StartsWith("lexus2_END"))
+   if(current.value.StartsWith("lexus2_END") && !old.value.StartsWith("lexus2_END"))
    {
-       if(vars.doSplit)
-       {
-            vars.doSplit = false;
-            return true;
-       }
-       
-   }
-   else
-   {
-       vars.doSplit = true;
-   }
+        //vars.doSplit = false;
+        return true;
+    }
+
    if(current.end.StartsWith("h26350_iibuchi"))
    {
        vars.endFight = true;
