@@ -5,7 +5,7 @@ state("YakuzaKiwami2", "AS")
     string10 value : 0x2A04510;
     string26 end : 0x2A04100;
 }
-state("YakuzaKiwami2", "EU")
+state("YakuzaKiwami2", "EU/US")
 {
     byte isLoad : 0x2F05A00, 0x224;
     byte diffStart : 0x029FB430, 0x360;
