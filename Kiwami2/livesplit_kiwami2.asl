@@ -21,7 +21,7 @@ init
     }
     if(modules.First().ModuleMemorySize==69767168)
     {
-        version = "EU";
+        version = "EU/US";
     }
     //vars.doSplit = true;
     vars.endFight = false;
