@@ -1,18 +1,25 @@
 state("YakuzaKiwami2", "AS")
 {
     byte isLoad : 0x2F04580, 0x224;
-    byte diffStart : 0x029FA6E0, 0x360;
+    byte diffStart : 0x29FA6E0, 0x360;
     string10 value : 0x2A04510;
     string26 end : 0x2A04100;
 }
 state("YakuzaKiwami2", "EU/US")
 {
     byte isLoad : 0x2F05A00, 0x224;
-    byte diffStart : 0x029FB430, 0x360;
+    byte diffStart : 0x29FB430, 0x360;
     string10 value : 0x2A054B0;
     string26 end : 0x2A050A0; 
 }
-//EU: 69767168 AS: 69746688
+state("YakuzaKiwami2", "community")
+{
+    byte isLoad : 0x2EFFB00, 0x224;
+    byte diffStart : 0x29F6300, 0x360;
+    string10 value : 0x29FF510;
+    string26 end : 0x29FF100;
+}
+//EU: 69767168, AS: 69746688, comunnityTestBranch: 69738496
 init
 {
     if(modules.First().ModuleMemorySize==69746688)
@@ -23,7 +30,10 @@ init
     {
         version = "EU/US";
     }
-    //vars.doSplit = true;
+    if(modules.First().ModuleMemorySize==69738496)
+    {
+        version = "community";
+    }
     vars.endFight = false;
 }
 //Doesn't work for normal difficulty
@@ -46,7 +56,6 @@ start
 isLoading
 {
     return current.isLoad == 1;
-
 }
 split
 {
