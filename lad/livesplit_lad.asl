@@ -13,9 +13,14 @@ state("YakuzaLikeADragon", "1.4")
     byte isLoad : 0x2E55950, 0x50, 0x8, 0xC0, 0x10, 0x4A4;
 }
 
-state("YakuzaLikeADragon", "1.5")
+state("YakuzaLikeADragon", "1.5s")
 {
     byte isLoad : 0x2E53950, 0x48, 0x8, 0xC0, 0x10, 0x104;
+}
+
+state("YakuzaLikeADragon", "1.5w")
+{
+    byte isLoad : 0x21AC1D0, 0x48, 0x8, 0xC0, 0x10, 0x714;
 }
 
 
@@ -23,7 +28,11 @@ init
 {
     if(modules.First().ModuleMemorySize==421687296)
     {
-        version = "1.5";
+        version = "1.5s";
+    }
+    else if(modules.First().ModuleMemorySize==362835968)
+    {
+        version = "1.5w";
     }
     else if(modules.First().ModuleMemorySize==417984512)
     {
