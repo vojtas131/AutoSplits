@@ -23,10 +23,19 @@ state("YakuzaLikeADragon", "1.5w")
     byte isLoad : 0x21AC1D0, 0x48, 0x8, 0xC0, 0x10, 0x714;
 }
 
+state("YakuzaLikeADragon", "1.6s")
+{
+    byte isLoad : 0x21AC1D0, 0x48, 0x8, 0xC0, 0x10, 0x714;
+}
+
 
 init
 {
-    if(modules.First().ModuleMemorySize==421687296)
+    if(modules.First().ModuleMemorySize==424333312)
+    {
+        version = "1.5s";
+    }
+    else if(modules.First().ModuleMemorySize==421687296)
     {
         version = "1.5s";
     }
