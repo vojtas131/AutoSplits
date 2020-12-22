@@ -33,7 +33,7 @@ init
 {
     if(modules.First().ModuleMemorySize==424333312)
     {
-        version = "1.5s";
+        version = "1.6s";
     }
     else if(modules.First().ModuleMemorySize==421687296)
     {
