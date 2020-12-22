@@ -13,17 +13,17 @@ state("YakuzaLikeADragon", "1.4")
     byte isLoad : 0x2E55950, 0x50, 0x8, 0xC0, 0x10, 0x4A4;
 }
 
-state("YakuzaLikeADragon", "1.5s")
+state("YakuzaLikeADragon", "1.5")
 {
     byte isLoad : 0x2E53950, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
-state("YakuzaLikeADragon", "1.5w")
+state("YakuzaLikeADragon", "windowsStore")
 {
-    byte isLoad : 0x21AC1D0, 0x48, 0x8, 0xC0, 0x10, 0x714;
+    byte isLoad : 0x23CF740, 0x50, 0x8, 0xC0, 0x10, 0x104;
 }
 
-state("YakuzaLikeADragon", "1.6s")
+state("YakuzaLikeADragon", "1.6")
 {
     byte isLoad : 0x2E54950, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
@@ -33,15 +33,15 @@ init
 {
     if(modules.First().ModuleMemorySize==424333312)
     {
-        version = "1.6s";
-    }
-    else if(modules.First().ModuleMemorySize==421687296)
-    {
-        version = "1.5s";
+        version = "1.6";
     }
     else if(modules.First().ModuleMemorySize==362835968)
     {
-        version = "1.5w";
+        version = "windowsStore";
+    }
+    else if(modules.First().ModuleMemorySize==421687296)
+    {
+        version = "1.5";
     }
     else if(modules.First().ModuleMemorySize==417984512)
     {
