@@ -20,7 +20,7 @@ state("YakuzaLikeADragon", "1.5")
 
 state("YakuzaLikeADragon", "windowsStore")
 {
-    byte isLoad : 0x23CF740, 0x50, 0x8, 0xC0, 0x10, 0x104;
+    byte isLoad : 0x21AC1D0, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
 state("YakuzaLikeADragon", "1.6")
@@ -35,7 +35,7 @@ init
     {
         version = "1.6";
     }
-    else if(modules.First().ModuleMemorySize==362835968)
+    else if(modules.First().ModuleMemorySize==363524096)
     {
         version = "windowsStore";
     }
