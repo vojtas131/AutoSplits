@@ -28,7 +28,7 @@ state("YakuzaLikeADragon", "1.6")
     byte isLoad : 0x2E54950, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
-state("YakuzaLikeADragon", "1.7")
+state("YakuzaLikeADragon", "1.7-1.8")
 {
     byte isLoad : 0x2E56950, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
@@ -36,9 +36,9 @@ state("YakuzaLikeADragon", "1.7")
 
 init
 {
-    if(modules.First().ModuleMemorySize==446337024)
+    if(modules.First().ModuleMemorySize==446337024 || modules.First().ModuleMemorySize==406532096)
     {
-        version = "1.7";
+        version = "1.7-1.8";
     }
     else if(modules.First().ModuleMemorySize==424333312)
     {
