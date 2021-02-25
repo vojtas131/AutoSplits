@@ -75,12 +75,12 @@ init
     }   
 }
 
-
+/*
 update
 {
     print(modules.First().ModuleMemorySize.ToString());
 }
-
+*/
 
 //a01_0020 p00_start
 start
