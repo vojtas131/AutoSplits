@@ -33,10 +33,19 @@ state("YakuzaLikeADragon", "1.7-1.8")
     byte isLoad : 0x2E56950, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
+state("YakuzaLikeADragon", "1.9")
+{
+    byte isLoad : 0x2E56A10, 0x48, 0x8, 0xC0, 0x10, 0x104;
+}
+
 
 init
 {
-    if(modules.First().ModuleMemorySize==446337024 || modules.First().ModuleMemorySize==406532096)
+    if(modules.First().ModuleMemorySize==412098560)
+    {
+        version = "1.9";
+    }
+    else if(modules.First().ModuleMemorySize==446337024 || modules.First().ModuleMemorySize==406532096)
     {
         version = "1.7-1.8";
     }
@@ -66,12 +75,12 @@ init
     }   
 }
 
-/*
+
 update
 {
     print(modules.First().ModuleMemorySize.ToString());
 }
-*/
+
 
 //a01_0020 p00_start
 start
