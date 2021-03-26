@@ -19,7 +19,14 @@ state("YakuzaKiwami2", "community")
     string10 value : 0x29FF510;
     string26 end : 0x29FF100;
 }
-//EU: 69767168, AS: 69746688, comunnityTestBranch: 69738496
+state("YakuzaKiwami2", "Game Pass")
+{
+    byte isLoad : 0x374C8E0, 0x224;
+    byte diffStart : 0x3249C30, 0x360;
+    string10 value : 0x324EDE0;
+    string26 end : 0x324E9D0;
+}
+//EU: 69767168, AS: 69746688, comunnityTestBranch: 69738496, Game Pass: 78544896
 init
 {
     if(modules.First().ModuleMemorySize==69746688)
@@ -34,8 +41,13 @@ init
     {
         version = "community";
     }
+    if(modules.First().ModuleMemorySize==78544896)
+    {
+        version= "Game Pass";
+    }
     vars.endFight = false;
 }
+
 //Doesn't work for normal difficulty
 start
 {
