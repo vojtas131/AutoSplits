@@ -8,11 +8,6 @@ state("YakuzaLikeADragon", "windowsStore")
     byte isLoad : 0x21AC1D0, 0x48, 0x8, 0xC0, 0x10, 0x714;
 }
 
-state("YakuzaLikeADragon", "1.7-1.8")
-{
-    byte isLoad : 0x2E56950, 0x48, 0x8, 0xC0, 0x10, 0x104;
-}
-
 state("YakuzaLikeADragon", "1.9")
 {
     byte isLoad : 0x2E56A10, 0x48, 0x8, 0xC0, 0x10, 0x104;
@@ -23,27 +18,30 @@ state("YakuzaLikeADragon", "1.9.1")
     byte isLoad : 0x2FD8910, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
+state("YakuzaLikeADragon", "1.9.2")
+{
+    byte isLoad : 0x2FD8950, 0x48, 0x8, 0xC0, 0x20, 0x104;
+}
+
 init
 {
-    if(modules.First().ModuleMemorySize==435302400)
+    switch (modules.First().ModuleMemorySize)
     {
-        version = "1.9.1";
-    }
-    else if(modules.First().ModuleMemorySize==412098560)
-    {
-        version = "1.9";
-    }
-    else if(modules.First().ModuleMemorySize==446337024 || modules.First().ModuleMemorySize==406532096)
-    {
-        version = "1.7-1.8";
-    }
-    else if(modules.First().ModuleMemorySize==363524096)
-    {
-        version = "windowsStore";
-    }
-    else
-    {
-        version = "1.0";
+        case 436711424:
+            version = "1.9.2";
+            break;
+        case 435302400:
+            version = "1.9.1";
+            break;
+        case 412098560:
+            version = "1.9";
+            break;
+        case 363524096:
+            version = "windowsStore";
+            break;
+        default:
+            version = "1.0";
+            break;
     }   
 }
 
