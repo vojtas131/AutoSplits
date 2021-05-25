@@ -27,9 +27,8 @@ init
 {
     switch (modules.First().ModuleMemorySize)
     {
+        case 414711808:
         case 434040832:
-            version = "1.9.2";
-            break;
         case 436711424:
             version = "1.9.2";
             break;
