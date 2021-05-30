@@ -3,21 +3,29 @@ state("YakuzaLikeADragon", "1.0")
     byte isLoad : 0x2816858, 0xB08, 0xCC8, 0xF90, 0xAC8, 0xF90, 0x4A4;
 }
 
+// 363524096
 state("YakuzaLikeADragon", "windowsStore")
 {
     byte isLoad : 0x21AC1D0, 0x48, 0x8, 0xC0, 0x10, 0x714;
 }
 
+// 412098560
 state("YakuzaLikeADragon", "1.9")
 {
     byte isLoad : 0x2E56A10, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
+// 435302400
 state("YakuzaLikeADragon", "1.9.1")
 {
     byte isLoad : 0x2FD8910, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
+// multiple patches
+// 436711424
+// 434040832
+// 414711808
+// 447401984
 state("YakuzaLikeADragon", "1.9.2")
 {
     byte isLoad : 0x2FD8950, 0x48, 0x8, 0xC0, 0x20, 0x104;
@@ -27,11 +35,6 @@ init
 {
     switch (modules.First().ModuleMemorySize)
     {
-        case 414711808:
-        case 434040832:
-        case 436711424:
-            version = "1.9.2";
-            break;
         case 435302400:
             version = "1.9.1";
             break;
@@ -41,10 +44,15 @@ init
         case 363524096:
             version = "windowsStore";
             break;
+        // last few patches have worked with this so just assume it'll keep working
         default:
-            version = "1.0";
+            version = "1.9.2";
             break;
-    }   
+        // unknown memory size, will need to be found if someone wants to run on it
+        // default:
+        //     version = "1.0";
+        //     break;
+    }
 }
 
 /*
@@ -65,5 +73,5 @@ isLoading
 }
 split
 {
-   
+
 }
