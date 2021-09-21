@@ -31,6 +31,12 @@ state("YakuzaLikeADragon", "1.9.2")
     byte isLoad : 0x2FD8950, 0x48, 0x8, 0xC0, 0x20, 0x104;
 }
 
+// 415830016
+state("YakuzaLikeADragon", "latest")
+{
+    byte isLoad : 0x2FD4910, 0x48, 0x8, 0xC0, 0x10, 0x104;
+}
+
 init
 {
     switch (modules.First().ModuleMemorySize)
@@ -44,9 +50,14 @@ init
         case 363524096:
             version = "windowsStore";
             break;
-        // last few patches have worked with this so just assume it'll keep working
-        default:
+        // last few patches have worked with this so just assume it'll keep working 
+        // update: until the latest one so just gonna assume this was the last version
+        case 447401984:
             version = "1.9.2";
+            break;
+        //new one until it breaks
+        default:
+            version = "latest";
             break;
         // unknown memory size, will need to be found if someone wants to run on it
         // default:
