@@ -1,8 +1,7 @@
 // 412225536
-// Needs a fix as breaks when going to main menu 1.02
 state("YakuzaLikeADragon", "1.0")
 {
-    byte isLoad : 0x2816858, 0xB08, 0xCC8, 0xF90, 0xAC8, 0xF90, 0x4A4;
+    byte isLoad : 0x2E50C50, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
 // 363524096
