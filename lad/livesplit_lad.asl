@@ -7,7 +7,7 @@ state("YakuzaLikeADragon", "1.0")
 // 363524096
 state("YakuzaLikeADragon", "windowsStore")
 {
-    byte isLoad : 0x21AC1D0, 0x48, 0x8, 0xC0, 0x10, 0x714;
+    byte isLoad : 0x21AC370, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
 // 412098560
@@ -49,7 +49,7 @@ init
         case 412098560:
             version = "1.9";
             break;
-        case 363524096:
+        case 373248000:
             version = "windowsStore";
             break;
         // last few patches have worked with this so just assume it'll keep working 
