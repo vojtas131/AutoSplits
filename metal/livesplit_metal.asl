@@ -54,7 +54,7 @@ init
 
 update
 {
-    //print("" + current.stage);
+    print("" + current.stage);
     if(!settings["reset"])  return;
     if(current.stage == 36) vars.doReset = false;
     if(!vars.doReset && current.isLoad == 1)    vars.doReset = true;
@@ -95,7 +95,7 @@ split
     if(settings["torment"] && old.stage == 131)   return current.stage == 0;
     */
     //final split
-    if(old.stage == 36)   return current.stage != 36;
+    if(old.stage == 36)   return current.stage == 5;
     
     
     return old.stage == 1 && current.stage == 0;
