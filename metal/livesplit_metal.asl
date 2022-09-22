@@ -54,7 +54,7 @@ init
 
 update
 {
-    print("" + current.stage);
+    //print("" + current.stage);
     if(!settings["reset"])  return;
     if(current.stage == 36) vars.doReset = false;
     if(!vars.doReset && current.isLoad == 1)    vars.doReset = true;
