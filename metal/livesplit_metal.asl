@@ -5,7 +5,9 @@ state("Metal", "1.0")
 {
     
     int stage: "UnityPlayer.dll", 0x01A00940, 0xE0;
-    byte isLoad: "UnityPlayer.dll", 0x01A940F0, 0x128, 0x80, 0xB0;
+    //This pointer stopped working like once in 50 tries (thinking emoji)
+    //byte isLoad: "UnityPlayer.dll", 0x01A940F0, 0x128, 0x80, 0xB0; 
+    byte isLoad: "GameAssembly.dll", 0x02D2E9C0, 0xB8, 0x10, 0xB0;
 }
 
 
@@ -28,16 +30,16 @@ startup
         }
     }
 
-    settings.Add("ils", true, "Levels");
+    settings.Add("ils", true, "Levels start");
     settings.Add("tutorial", false, "Tutorial (Experimental)", "ils");
     settings.Add("voke", true, "Voke", "ils");
-    settings.Add("stygia", true, "Stygia", "ils");
-    settings.Add("yhelm", true, "Yhelm", "ils");
-    settings.Add("incaustis", true, "Incaustis", "ils");
-    settings.Add("gehenna", true, "Gehenna", "ils");
-    settings.Add("nihil", true, "Nihil", "ils");
-    settings.Add("acheron", true, "Acheron", "ils");
-    settings.Add("sheol", true, "Sheol", "ils");
+    settings.Add("stygia", false, "Stygia", "ils");
+    settings.Add("yhelm", false, "Yhelm", "ils");
+    settings.Add("incaustis", false, "Incaustis", "ils");
+    settings.Add("gehenna", false, "Gehenna", "ils");
+    settings.Add("nihil", false, "Nihil", "ils");
+    settings.Add("acheron", false, "Acheron", "ils");
+    settings.Add("sheol", false, "Sheol", "ils");
 
     settings.Add("torment", false, "Torments");
 
@@ -52,7 +54,7 @@ init
 
 update
 {
-    //print(""+ vars.doReset);
+    //print("" + current.stage);
     if(!settings["reset"])  return;
     if(current.stage == 36) vars.doReset = false;
     if(!vars.doReset && current.isLoad == 1)    vars.doReset = true;
@@ -81,16 +83,22 @@ start
 split
 {
     if(current.isLoad == 1) return false;
-    if(settings["tutorial"] && old.stage == 1)    return current.stage != 1;
-    if(settings["voke"] && old.stage == 15)    return current.stage != 15;
-    if(settings["stygia"] && old.stage == 17)  return current.stage != 17;
-    if(settings["yhelm"] && old.stage == 21)   return current.stage != 21;
-    if(settings["incaustis"] && old.stage == 24)   return current.stage != 24;
-    if(settings["gehenna"] && old.stage == 29)  return current.stage != 29;
-    if(settings["nihil"] && old.stage == 33)    return current.stage != 33;
-    if(settings["acheron"] && old.stage == 35)    return current.stage != 35;
-    if(settings["sheol"] && old.stage == 36)   return current.stage != 36;
-    if(settings["torment"] && old.stage == 131)   return current.stage != 131;
+    /*
+    if(settings["tutorial"] && old.stage == 1)    return current.stage == 0;
+    if(settings["voke"] && old.stage == 15)    return current.stage == 1;
+    if(settings["stygia"] && old.stage == 17)  return current.stage == 1;
+    if(settings["yhelm"] && old.stage == 21)   return current.stage == 1;
+    if(settings["incaustis"] && old.stage == 24)   return current.stage == 1;
+    if(settings["gehenna"] && old.stage == 29)  return current.stage == 4;
+    if(settings["nihil"] && old.stage == 33)    return current.stage == 1;
+    if(settings["acheron"] && old.stage == 35)    return current.stage == 1;
+    if(settings["torment"] && old.stage == 131)   return current.stage == 0;
+    */
+    //final split
+    if(old.stage == 36)   return current.stage != 36;
+    
+    
+    return old.stage == 1 && current.stage == 0;
 }
 
 reset
