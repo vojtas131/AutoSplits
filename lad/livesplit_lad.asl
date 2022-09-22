@@ -1,12 +1,13 @@
+// 412225536
 state("YakuzaLikeADragon", "1.0")
 {
-    byte isLoad : 0x2816858, 0xB08, 0xCC8, 0xF90, 0xAC8, 0xF90, 0x4A4;
+    byte isLoad : 0x2E50C50, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
 // 363524096
 state("YakuzaLikeADragon", "windowsStore")
 {
-    byte isLoad : 0x21AC1D0, 0x48, 0x8, 0xC0, 0x10, 0x714;
+    byte isLoad : 0x21AC370, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
 // 412098560
@@ -37,6 +38,7 @@ state("YakuzaLikeADragon", "latest")
     byte isLoad : 0x2FD4910, 0x48, 0x8, 0xC0, 0x10, 0x104;
 }
 
+//18921000
 init
 {
     switch (modules.First().ModuleMemorySize)
@@ -47,7 +49,7 @@ init
         case 412098560:
             version = "1.9";
             break;
-        case 363524096:
+        case 373248000:
             version = "windowsStore";
             break;
         // last few patches have worked with this so just assume it'll keep working 
@@ -55,14 +57,15 @@ init
         case 447401984:
             version = "1.9.2";
             break;
+        //version 1.2 but the first one basically?
+        case 412225536:
+             version = "1.0";
+             break;
         //new one until it breaks
         default:
             version = "latest";
             break;
-        // unknown memory size, will need to be found if someone wants to run on it
-        // default:
-        //     version = "1.0";
-        //     break;
+        
     }
 }
 
