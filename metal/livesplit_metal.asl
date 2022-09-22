@@ -1,7 +1,9 @@
+//Metal: Hellsinger autospliter made by vojtas131 and Dev1ne
 //version: 1.0 = 675840
 
 state("Metal", "1.0")
 {
+    
     int stage: "UnityPlayer.dll", 0x01A00940, 0xE0;
     byte isLoad: "UnityPlayer.dll", 0x01A940F0, 0x128, 0x80, 0xB0;
 }
@@ -9,6 +11,23 @@ state("Metal", "1.0")
 
 startup
 {
+    if (timer.CurrentTimingMethod == TimingMethod.RealTime)
+    // Asks user to change to game time if LiveSplit is currently set to Real Time.
+    {        
+        var timingMsg = MessageBox.Show (
+            "Metal: Hellsinger uses Time without Loads (Game Time) as the main timing method.\n"+
+            "LiveSplit is currently set to show Real Time (RTA).\n"+
+            "Would you like to switch the timing method to Game Time?",
+            "LiveSplit | Metal: Hellsinger",
+            MessageBoxButtons.YesNo,MessageBoxIcon.Question
+        );
+        
+        if (timingMsg == DialogResult.Yes)
+        {
+            timer.CurrentTimingMethod = TimingMethod.GameTime;
+        }
+    }
+
     settings.Add("ils", true, "Levels");
     settings.Add("tutorial", false, "Tutorial (Experimental)", "ils");
     settings.Add("voke", true, "Voke", "ils");
