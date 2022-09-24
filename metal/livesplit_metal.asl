@@ -5,9 +5,9 @@ state("Metal", "1.0")
 {
     
     int stage: "UnityPlayer.dll", 0x01A00940, 0xE0;
-    //This pointer stopped working like once in 50 tries (thinking emoji)
-    //byte isLoad: "UnityPlayer.dll", 0x01A940F0, 0x128, 0x80, 0xB0; 
-    byte isLoad: "GameAssembly.dll", 0x02D2E9C0, 0xB8, 0x10, 0xB0;
+    byte isLoad: "UnityPlayer.dll", 0x01AA5360, 0xB8, 0x8, 0x40, 0xB0; 
+    //Doesn't work on game pass version
+    //byte isLoad: "GameAssembly.dll", 0x02D2E9C0, 0xB8, 0x10, 0xB0;
 }
 
 
