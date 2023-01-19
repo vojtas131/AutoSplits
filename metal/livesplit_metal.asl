@@ -124,6 +124,7 @@ split
     */
     //final split
     if(old.stage == 36)   return current.stage == 5;
+    if(settings["v1.5"] && old.stage == vars.voke) return current.stage == 4;
     
     
     return old.stage == 1 && current.stage == 0;
