@@ -26,7 +26,15 @@ state("YakuzaKiwami2", "Game Pass")
     string50 value : 0x324EDE0;
     string26 end : 0x324E9D0;
 }
-//EU: 69767168, AS: 69746688, comunnityTestBranch: 69738496, Game Pass: 78544896
+state("YakuzaKiwami2", "GOG")
+{
+    byte isLoad : 0x2E1D760, 0x224;
+    long fileTimer : 0x2918EF0, 0x368;
+    string50 value : 0x29E10A0;
+    string26 end : 0x291DC90;
+}
+
+// AS: 69746688, EU/US: 69767168, community: 69738496, Game Pass: 78544896, GOG: 68591616
 init
 {
     int size = modules.First().ModuleMemorySize;
@@ -47,11 +55,15 @@ init
     {
         version = "Game Pass";
     }
+    else if (size == 68591616)
+    {
+        version = "GOG";
+    }
 
     vars.endFight = false;
 }
 
-//Works for all difficulties
+// Works for all difficulties
 start
 {
     // IGT is set to 0 the moment a new game is started.
