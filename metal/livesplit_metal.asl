@@ -10,11 +10,18 @@ state("Metal", "1.0")
     //byte isLoad: "GameAssembly.dll", 0x02D2E9C0, 0xB8, 0x10, 0xB0;
 }
 
+//TODO: Test if 1.8 can be used for 1.5
 state("Metal", "1.5")
 {
     
     int stage: "UnityPlayer.dll", 0x01A00940, 0xE0;
     byte isLoad: "UnityPlayer.dll", 0x01AA5360, 0xB8, 0x28, 0x40, 0xB8; 
+}
+
+state("Metal", "1.8")
+{ 
+    int stage: "UnityPlayer.dll", 0x01A00940, 0xE0;
+    byte isLoad: "UnityPlayer.dll", 0x01AA5360, 0xB8, 0x28, 0x40, 0xC0; 
 }
 
 
@@ -54,7 +61,8 @@ startup
 
     settings.Add("versions", true, "Game version (pick only one!)");
     settings.Add("v1.0", false, "1.0", "versions");
-    settings.Add("v1.5", true, "1.5", "versions");
+    settings.Add("v1.5", false, "1.5", "versions");
+    settings.Add("v1.8", true, "1.8", "versions");
 }
 
 
@@ -71,6 +79,14 @@ init
     }
     if(settings["v1.5"]) {
         version = "1.5";
+        vars.voke = 24;
+        vars.stygia = 27;
+        vars.yhelm = 37;
+        vars.incaustis = 27;
+        vars.gehenna = 32;
+    }
+    if(settings["v1.8"]) {
+        version = "1.8";
         vars.voke = 24;
         vars.stygia = 27;
         vars.yhelm = 37;
