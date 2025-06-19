@@ -106,10 +106,3 @@ onReset
 {
     vars.endFight = false;
 }
-
-reset
-{
-    // Resets when the SEGA logo is displayed.
-    // The IGT check should be completely unnecessary, but we have the pointer, so why not?
-    return current.value == "lexus2_logo.lua" && current.fileTimer < 6000;
-}
