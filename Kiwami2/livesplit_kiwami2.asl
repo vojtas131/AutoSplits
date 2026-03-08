@@ -206,14 +206,25 @@ isLoading
 
 split
 {
-    // If we're not tracking a fight, and if the Magic string has changed:
-    if (vars.OngoingFight == "" && current.Magic != old.Magic)
+    // If we're not tracking a fight:
+    if (vars.OngoingFight == "")
     {
-        // Is the current Magic string a checked setting?
-        if (current.Magic != null && settings.ContainsKey(current.Magic) && settings[current.Magic] && !vars.Splits.Contains(current.Magic))
+        // Is the current Lua string a checked setting?
+        if (current.Lua != old.Lua && current.Lua != null && settings.ContainsKey(current.Lua) && settings[current.Lua] && !vars.Splits.Contains(current.Lua))
         {
-            // Is it a chapter title card? Or Clan Creator?
-            if (settings["CHAPTERS"] && current.Magic.StartsWith("lexus2_END") || settings["MISC"] && current.Magic == "a61430_clan_btl_win")
+            // Is it a chapter title card?
+            if (settings["CHAPTERS"] && current.Lua.StartsWith("lexus2_END"))
+            {
+                vars.Splits.Add(current.Lua);
+                return true;
+            }
+        }
+
+        // Is the current Magic string a checked setting?
+        else if (current.Magic != old.Magic && current.Magic != null && settings.ContainsKey(current.Magic) && settings[current.Magic] && !vars.Splits.Contains(current.Magic))
+        {
+            // Is it Clan Creator?
+            if (settings["MISC"] && current.Magic == "a61430_clan_btl_win")
             {
                 vars.Splits.Add(current.Magic);
                 return true;
